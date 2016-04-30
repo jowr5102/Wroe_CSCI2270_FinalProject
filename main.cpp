@@ -20,12 +20,20 @@ int main()
             cout<<"Enter a correct input."<<endl;
         else
         {
-            cout<<endl;
-            myBoard->assignColors(answer);
-            myBoard->viewGame();
-            if (myBoard->allGuesses[numTries]->correctColorandPosition == 4)
-                break;
-            numTries++;
+            // validates input before running game code
+            bool inputPassed;
+            inputPassed = myBoard->validateInput(answer);
+            if (inputPassed) {
+                cout<<endl;
+                myBoard->assignColors(answer);
+                myBoard->viewGame();
+                if (myBoard->allGuesses[numTries]->correctColorandPosition == 4)
+                    break;
+                numTries++;
+            }
+            else {
+                cout << "Please enter a valid guess. Your guess must be 4 characters and only include the characters r, b, g, y, c, p." << endl;
+            }
         }
     }
     if (numTries == 10)

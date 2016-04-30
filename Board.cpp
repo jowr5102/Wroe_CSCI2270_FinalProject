@@ -236,4 +236,21 @@ void Board::colorCounter(guess *combo)
     }
 }
 
+/*
+Method: validateInput
+Description: This function checks to make sure that only correct characters are entered. If correct it will run the game code, otherwise it asks the user to enter correct input.
+Pre-conditions: User enters their guess
+Post-conditions: Game either runs using the input, or throws an error if input is incorrect
+*/
+bool Board::validateInput(std::string guess) {
+    bool correctInput = true;
+    std::string validInput = "rbgycp";
+    for (char& c : guess) { // loop through chars in string
+        if (validInput.find(c) == std::string::npos) { // if it's not the valid input string
+            correctInput = false;
+        }
+    }
+    return correctInput;
+}
+
 
