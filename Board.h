@@ -27,6 +27,7 @@ class Board
         void colorCounter(guess*);
         void assignColors(std::string x);
         void viewGame();
+        bool validateInput(std::string guess);
         int correctCol;
         int correctColPos;
         guess* allGuesses[10];
