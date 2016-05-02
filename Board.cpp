@@ -24,6 +24,11 @@ Board::~Board()
     //dtor
 }
 
+/*
+Method: createCode
+Description: This is the method that randomnly generates a code by using a random number to use as the index in the color string array found in Board.h
+*/
+
 void Board::createCode()
 {
     std::string color;
@@ -51,6 +56,11 @@ void Board::createCode()
     }
     colorCode();
 }
+
+/*
+Method: assignColors
+Description: This is the method that colors the user's guess code by adding substrings of values that give text color.
+*/
 
 void Board::assignColors(std::string x)
 {
@@ -104,6 +114,11 @@ void Board::assignColors(std::string x)
     }
 }
 
+/*
+Method: colorCode
+Description: This is the function that gives the code text color by adding substrings of values that give text color (Found in Board.h)
+*/
+
 void Board::colorCode()
 {
     for (int x = 0; x < 4; x++)
@@ -122,6 +137,11 @@ void Board::colorCode()
             code[x] = cPink + code[x] + cDefault;
     }
 }
+
+/*
+Method: viewGame
+Description: Shows all guesses with corresponding number of correct colors and correct colors in the right position
+*/
 
 void Board::viewGame()
 {
@@ -152,6 +172,11 @@ void Board::viewGame()
     }
     */
 }
+
+/*
+Method: checkCombo
+Description: Checks a given combo against the code combo
+*/
 
 void Board::checkCombo(guess *combo)
 {
@@ -202,6 +227,10 @@ void Board::checkCombo(guess *combo)
     }
 }
 
+/*Method: colorCounter
+Description: counts the number of each color in a given combination
+*/
+
 void Board::colorCounter(guess *combo)
 {
     int numAdded = 0;
@@ -245,8 +274,8 @@ Post-conditions: Game either runs using the input, or throws an error if input i
 bool Board::validateInput(std::string guess) {
     bool correctInput = true;
     std::string validInput = "rbgycp";
-    for (char& c : guess) { // loop through chars in string
-        if (validInput.find(c) == std::string::npos) { // if it's not the valid input string
+    for (int i = 0; i < guess.size(); i++) { // loop through chars in string
+        if (validInput.find(guess[i]) == std::string::npos) { // if it's not the valid input string
             correctInput = false;
         }
     }
